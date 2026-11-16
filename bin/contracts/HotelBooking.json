@@ -1,0 +1,3087 @@
+{
+    "contractName": "HotelBooking",
+    "abi": [
+        {
+            "inputs": [],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "bookingId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "BookingCancelled",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "bookingId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "BookingConfirmed",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "bookingId",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "guest",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "roomNumber",
+                    "type": "uint256"
+                }
+            ],
+            "name": "RoomBooked",
+            "type": "event"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "roomNumber",
+                    "type": "uint256"
+                }
+            ],
+            "name": "bookRoom",
+            "outputs": [],
+            "stateMutability": "payable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "bookingCount",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "bookings",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "guest",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "roomNumber",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "enum HotelBooking.Status",
+                    "name": "status",
+                    "type": "uint8"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "bookingId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "cancelBooking",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "bookingId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "confirmBooking",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "hotelOwner",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "roomPrice",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.38+commit.1835d247\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"bookingId\",\"type\":\"uint256\"}],\"name\":\"BookingCancelled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"bookingId\",\"type\":\"uint256\"}],\"name\":\"BookingConfirmed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"bookingId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"guest\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"roomNumber\",\"type\":\"uint256\"}],\"name\":\"RoomBooked\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"roomNumber\",\"type\":\"uint256\"}],\"name\":\"bookRoom\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"bookingCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"bookings\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"guest\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"roomNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"enum HotelBooking.Status\",\"name\":\"status\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"bookingId\",\"type\":\"uint256\"}],\"name\":\"cancelBooking\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"bookingId\",\"type\":\"uint256\"}],\"name\":\"confirmBooking\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"hotelOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"roomPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/HP/blockchain-hotel-booking/contracts/HotelBooking.sol\":\"HotelBooking\"},\"evmVersion\":\"osaka\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"c:/Users/HP/blockchain-hotel-booking/contracts/HotelBooking.sol\":{\"keccak256\":\"0x9e4e5ca4faa88085172e96b284ba7a42c2373e39bf7de0781a7bcbdfed4017c8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d1edf07ade4d0833d872d77c574c062d301fc696e9f20db2a1638c4853e8207e\",\"dweb:/ipfs/QmRyCWVhLUVzRXzNALqwFtX6MJCVr75RW4vUJwuW3yM19u\"]}},\"version\":1}",
+    "bytecode": "60808060405234603257670de0b6b3a76400006001555f80546001600160a01b031916331790556105bb90816100378239f35b5f80fdfe60808060405260033611610011575f80fd5b5f3560e01c9081630dca825e146103d5575080631dab301e1461037557806354056b69146102715780635f49d3d8146100cd5780636c036162146100b05780636d759172146100935763b173616b14610068575f80fd5b3461008f575f36600319011261008f575f546040516001600160a01b039091168152602090f35b5f80fd5b3461008f575f36600319011261008f576020600354604051908152f35b3461008f575f36600319011261008f576020600154604051908152f35b602036600319011261008f57600435801561023d576001543403610204576003545f1981146101f0576001019081600355604051608081019080821067ffffffffffffffff8311176101dc576003916040523381526020810183815260408201903482526060830195600187525f52600260205260405f209260018060a01b039051166bffffffffffffffffffffffff60a01b8454161783555160018301555160028201550191519060048210156101c8577f2b4708ffb84be173b818d9b07f07c6679aa34f2f03fa0763b98034f6fc694fe59260609260ff80198354169116179055600354906040519182523360208301526040820152a1005b634e487b7160e01b5f52602160045260245ffd5b634e487b7160e01b5f52604160045260245ffd5b634e487b7160e01b5f52601160045260245ffd5b60405162461bcd60e51b8152602060048201526011602482015270125b98dbdc9c9958dd081c185e5b595b9d607a1b6044820152606490fd5b60405162461bcd60e51b815260206004820152600c60248201526b496e76616c696420726f6f6d60a01b6044820152606490fd5b3461008f57602036600319011261008f575f54600435906001600160a01b0316330361033d57805f52600260205260ff600360405f2001541660048110156101c857600103610300576020817f853fc6307cc2d72d0ec45ec77f198703d63dd760dedc66cf5488bc9727d69f9c925f5260028252600360405f2001600260ff19825416179055604051908152a1005b60405162461bcd60e51b8152602060048201526015602482015274426f6f6b696e67206e6f7420617661696c61626c6560581b6044820152606490fd5b60405162461bcd60e51b815260206004820152601060248201526f27b7363c903437ba32b61037bbb732b960811b6044820152606490fd5b3461008f57602036600319011261008f576004355f52600260205260405f2060018060a01b0381541660018201549160ff6003600283015492015416926040519283526020830152604082015260048210156101c8576080916060820152f35b3461008f57602036600319011261008f5760043590815f52600260205260405f209060018060a01b0382541633148015610572575b1561053f57506003810160ff81541660048110156101c85760010361050a57805460ff191660031790556002810180545f91829055915490918291829182916001600160a01b03165af13d15610505573d67ffffffffffffffff81116101dc5760405190601f8101601f19908116603f0116820167ffffffffffffffff8111838210176101dc5760405281525f60203d92013e5b156104d05760207ff774c001cb52a3566b767ed6e37c92706acb2b80a3ff6049e2849cd62725d08591604051908152a1005b60405162461bcd60e51b815260206004820152600d60248201526c1499599d5b990819985a5b1959609a1b6044820152606490fd5b61049e565b60405162461bcd60e51b815260206004820152600d60248201526c10d85b9b9bdd0818d85b98d95b609a1b6044820152606490fd5b62461bcd60e51b815260206004820152600e60248201526d139bdd08185d5d1a1bdc9a5e995960921b6044820152606490fd5b505f546001600160a01b0316331461040a56fea2646970667358221220976849ebc286ca0a988fa15479a20ef81b4ab63b9ac26d7f8eeeb551accc2adc64736f6c63430008260033",
+    "deployedBytecode": "60808060405260033611610011575f80fd5b5f3560e01c9081630dca825e146103d5575080631dab301e1461037557806354056b69146102715780635f49d3d8146100cd5780636c036162146100b05780636d759172146100935763b173616b14610068575f80fd5b3461008f575f36600319011261008f575f546040516001600160a01b039091168152602090f35b5f80fd5b3461008f575f36600319011261008f576020600354604051908152f35b3461008f575f36600319011261008f576020600154604051908152f35b602036600319011261008f57600435801561023d576001543403610204576003545f1981146101f0576001019081600355604051608081019080821067ffffffffffffffff8311176101dc576003916040523381526020810183815260408201903482526060830195600187525f52600260205260405f209260018060a01b039051166bffffffffffffffffffffffff60a01b8454161783555160018301555160028201550191519060048210156101c8577f2b4708ffb84be173b818d9b07f07c6679aa34f2f03fa0763b98034f6fc694fe59260609260ff80198354169116179055600354906040519182523360208301526040820152a1005b634e487b7160e01b5f52602160045260245ffd5b634e487b7160e01b5f52604160045260245ffd5b634e487b7160e01b5f52601160045260245ffd5b60405162461bcd60e51b8152602060048201526011602482015270125b98dbdc9c9958dd081c185e5b595b9d607a1b6044820152606490fd5b60405162461bcd60e51b815260206004820152600c60248201526b496e76616c696420726f6f6d60a01b6044820152606490fd5b3461008f57602036600319011261008f575f54600435906001600160a01b0316330361033d57805f52600260205260ff600360405f2001541660048110156101c857600103610300576020817f853fc6307cc2d72d0ec45ec77f198703d63dd760dedc66cf5488bc9727d69f9c925f5260028252600360405f2001600260ff19825416179055604051908152a1005b60405162461bcd60e51b8152602060048201526015602482015274426f6f6b696e67206e6f7420617661696c61626c6560581b6044820152606490fd5b60405162461bcd60e51b815260206004820152601060248201526f27b7363c903437ba32b61037bbb732b960811b6044820152606490fd5b3461008f57602036600319011261008f576004355f52600260205260405f2060018060a01b0381541660018201549160ff6003600283015492015416926040519283526020830152604082015260048210156101c8576080916060820152f35b3461008f57602036600319011261008f5760043590815f52600260205260405f209060018060a01b0382541633148015610572575b1561053f57506003810160ff81541660048110156101c85760010361050a57805460ff191660031790556002810180545f91829055915490918291829182916001600160a01b03165af13d15610505573d67ffffffffffffffff81116101dc5760405190601f8101601f19908116603f0116820167ffffffffffffffff8111838210176101dc5760405281525f60203d92013e5b156104d05760207ff774c001cb52a3566b767ed6e37c92706acb2b80a3ff6049e2849cd62725d08591604051908152a1005b60405162461bcd60e51b815260206004820152600d60248201526c1499599d5b990819985a5b1959609a1b6044820152606490fd5b61049e565b60405162461bcd60e51b815260206004820152600d60248201526c10d85b9b9bdd0818d85b98d95b609a1b6044820152606490fd5b62461bcd60e51b815260206004820152600e60248201526d139bdd08185d5d1a1bdc9a5e995960921b6044820152606490fd5b505f546001600160a01b0316331461040a56fea2646970667358221220976849ebc286ca0a988fa15479a20ef81b4ab63b9ac26d7f8eeeb551accc2adc64736f6c63430008260033",
+    "sourceMap": "64:2300:0:-:0;;;;;;;152:7;;64:2300;-1:-1:-1;64:2300:0;;-1:-1:-1;;;;;;64:2300:0;735:10;64:2300;;;;;;;;;;;;;",
+    "deployedSourceMap": "64:2300:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;64:2300:0;;;;;;;;-1:-1:-1;;;;;64:2300:0;;;;;;;;;;;;;;;;;;-1:-1:-1;;64:2300:0;;;;;;;;;;;;;;;;;;;-1:-1:-1;;64:2300:0;;;;;125:34;64:2300;;;;;;;;;;-1:-1:-1;;64:2300:0;;;;;;946:14;;64:2300;;;;996:9;:22;64:2300;;;;-1:-1:-1;;64:2300:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1127:10;64:2300;;;1105:120;;64:2300;;;;1105:120;;996:9;;64:2300;;1105:120;;;64:2300;;;;;;1080:8;64:2300;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1080:8;64:2300;;;;;;;;;;;;;1243:98;64:2300;1105:120;64:2300;;;;;;;;;;;;;;;;;;;;1127:10;64:2300;;;;;;;;1243:98;64:2300;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;64:2300:0;;;;;;;;;;;;-1:-1:-1;;;64:2300:0;;;;;;;;;;-1:-1:-1;;;64:2300:0;;;;;;;;;;;;-1:-1:-1;;;64:2300:0;;;;;;;;;;;;;-1:-1:-1;;64:2300:0;;;;;;;;;-1:-1:-1;;;;;64:2300:0;801:10;:24;64:2300;;;;;1473:8;64:2300;;;;;;;1473:26;64:2300;;;;;;;;;1473:43;64:2300;;;;1641:27;64:2300;;;1473:8;64:2300;;;;;;1578:26;1473:8;64:2300;;;;;;;;;;;;;1641:27;64:2300;;;;-1:-1:-1;;;64:2300:0;;;;;;;;;;;;-1:-1:-1;;;64:2300:0;;;;;;;;;;-1:-1:-1;;;64:2300:0;;;;;;;;;;;;-1:-1:-1;;;64:2300:0;;;;;;;;;;;;;-1:-1:-1;;64:2300:0;;;;;;;;400:43;64:2300;;;;;;;;;;;;;;400:43;;64:2300;400:43;64:2300;;400:43;;;64:2300;400:43;;64:2300;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;64:2300:0;;;;;;;;;;1770:8;64:2300;;;;;;;;;;;;;;1824:10;:27;:68;;;;64:2300;;;;1969:14;64:2300;1969:14;;64:2300;;;;;;;;;;;1969:31;64:2300;;;;-1:-1:-1;;64:2300:0;;;;;1770:8;2117:14;;64:2300;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;64:2300:0;2192:70;;64:2300;;;;;;;;;;;;;;;;-1:-1:-1;;64:2300:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2326:27;64:2300;;;;;;2326:27;64:2300;;;;-1:-1:-1;;;64:2300:0;;;;;;;;;;;;-1:-1:-1;;;64:2300:0;;;;;;;;;;;;;-1:-1:-1;;;64:2300:0;;;;;;;;;;;;-1:-1:-1;;;64:2300:0;;;;;;;;-1:-1:-1;;;64:2300:0;;;;;;;;;;;;-1:-1:-1;;;64:2300:0;;;;;;;1824:68;-1:-1:-1;64:2300:0;;-1:-1:-1;;;;;64:2300:0;1824:10;1868:24;1824:68;",
+    "sourcePath": "c:/Users/HP/blockchain-hotel-booking/contracts/HotelBooking.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.38+commit.1835d247"
+    },
+    "ast": {
+        "absolutePath": "c:/Users/HP/blockchain-hotel-booking/contracts/HotelBooking.sol",
+        "exportedSymbols": {
+            "HotelBooking": [
+                218
+            ]
+        },
+        "id": 219,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".20"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "36:24:0"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "HotelBooking",
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 218,
+                "linearizedBaseContracts": [
+                    218
+                ],
+                "name": "HotelBooking",
+                "nameLocation": "73:12:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "constant": false,
+                        "functionSelector": "b173616b",
+                        "id": 3,
+                        "mutability": "mutable",
+                        "name": "hotelOwner",
+                        "nameLocation": "108:10:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 218,
+                        "src": "93:25:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                        },
+                        "typeName": {
+                            "id": 2,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "93:7:0",
+                            "stateMutability": "nonpayable",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "6c036162",
+                        "id": 6,
+                        "mutability": "mutable",
+                        "name": "roomPrice",
+                        "nameLocation": "140:9:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 218,
+                        "src": "125:34:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                        },
+                        "typeName": {
+                            "id": 4,
+                            "name": "uint256",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "125:7:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                            }
+                        },
+                        "value": {
+                            "hexValue": "31",
+                            "id": 5,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "152:7:0",
+                            "subdenomination": "ether",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_rational_1000000000000000000_by_1",
+                                "typeString": "int_const 1000000000000000000"
+                            },
+                            "value": "1"
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "canonicalName": "HotelBooking.Status",
+                        "id": 11,
+                        "members": [
+                            {
+                                "id": 7,
+                                "name": "None",
+                                "nameLocation": "191:4:0",
+                                "nodeType": "EnumValue",
+                                "src": "191:4:0"
+                            },
+                            {
+                                "id": 8,
+                                "name": "Booked",
+                                "nameLocation": "206:6:0",
+                                "nodeType": "EnumValue",
+                                "src": "206:6:0"
+                            },
+                            {
+                                "id": 9,
+                                "name": "Confirmed",
+                                "nameLocation": "223:9:0",
+                                "nodeType": "EnumValue",
+                                "src": "223:9:0"
+                            },
+                            {
+                                "id": 10,
+                                "name": "Cancelled",
+                                "nameLocation": "243:9:0",
+                                "nodeType": "EnumValue",
+                                "src": "243:9:0"
+                            }
+                        ],
+                        "name": "Status",
+                        "nameLocation": "173:6:0",
+                        "nodeType": "EnumDefinition",
+                        "src": "168:91:0"
+                    },
+                    {
+                        "canonicalName": "HotelBooking.Booking",
+                        "id": 21,
+                        "members": [
+                            {
+                                "constant": false,
+                                "id": 13,
+                                "mutability": "mutable",
+                                "name": "guest",
+                                "nameLocation": "301:5:0",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 21,
+                                "src": "293:13:0",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                },
+                                "typeName": {
+                                    "id": 12,
+                                    "name": "address",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "293:7:0",
+                                    "stateMutability": "nonpayable",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    }
+                                },
+                                "visibility": "internal"
+                            },
+                            {
+                                "constant": false,
+                                "id": 15,
+                                "mutability": "mutable",
+                                "name": "roomNumber",
+                                "nameLocation": "325:10:0",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 21,
+                                "src": "317:18:0",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                },
+                                "typeName": {
+                                    "id": 14,
+                                    "name": "uint256",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "317:7:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    }
+                                },
+                                "visibility": "internal"
+                            },
+                            {
+                                "constant": false,
+                                "id": 17,
+                                "mutability": "mutable",
+                                "name": "amount",
+                                "nameLocation": "354:6:0",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 21,
+                                "src": "346:14:0",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                },
+                                "typeName": {
+                                    "id": 16,
+                                    "name": "uint256",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "346:7:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    }
+                                },
+                                "visibility": "internal"
+                            },
+                            {
+                                "constant": false,
+                                "id": 20,
+                                "mutability": "mutable",
+                                "name": "status",
+                                "nameLocation": "378:6:0",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 21,
+                                "src": "371:13:0",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_enum$_Status_$11",
+                                    "typeString": "enum HotelBooking.Status"
+                                },
+                                "typeName": {
+                                    "id": 19,
+                                    "nodeType": "UserDefinedTypeName",
+                                    "pathNode": {
+                                        "id": 18,
+                                        "name": "Status",
+                                        "nameLocations": [
+                                            "371:6:0"
+                                        ],
+                                        "nodeType": "IdentifierPath",
+                                        "referencedDeclaration": 11,
+                                        "src": "371:6:0"
+                                    },
+                                    "referencedDeclaration": 11,
+                                    "src": "371:6:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_enum$_Status_$11",
+                                        "typeString": "enum HotelBooking.Status"
+                                    }
+                                },
+                                "visibility": "internal"
+                            }
+                        ],
+                        "name": "Booking",
+                        "nameLocation": "274:7:0",
+                        "nodeType": "StructDefinition",
+                        "scope": 218,
+                        "src": "267:125:0",
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "1dab301e",
+                        "id": 26,
+                        "mutability": "mutable",
+                        "name": "bookings",
+                        "nameLocation": "435:8:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 218,
+                        "src": "400:43:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Booking_$21_storage_$",
+                            "typeString": "mapping(uint256 => struct HotelBooking.Booking)"
+                        },
+                        "typeName": {
+                            "id": 25,
+                            "keyName": "",
+                            "keyNameLocation": "-1:-1:-1",
+                            "keyType": {
+                                "id": 22,
+                                "name": "uint256",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "408:7:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                }
+                            },
+                            "nodeType": "Mapping",
+                            "src": "400:27:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Booking_$21_storage_$",
+                                "typeString": "mapping(uint256 => struct HotelBooking.Booking)"
+                            },
+                            "valueName": "",
+                            "valueNameLocation": "-1:-1:-1",
+                            "valueType": {
+                                "id": 24,
+                                "nodeType": "UserDefinedTypeName",
+                                "pathNode": {
+                                    "id": 23,
+                                    "name": "Booking",
+                                    "nameLocations": [
+                                        "419:7:0"
+                                    ],
+                                    "nodeType": "IdentifierPath",
+                                    "referencedDeclaration": 21,
+                                    "src": "419:7:0"
+                                },
+                                "referencedDeclaration": 21,
+                                "src": "419:7:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Booking_$21_storage_ptr",
+                                    "typeString": "struct HotelBooking.Booking"
+                                }
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "6d759172",
+                        "id": 28,
+                        "mutability": "mutable",
+                        "name": "bookingCount",
+                        "nameLocation": "465:12:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 218,
+                        "src": "450:27:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                        },
+                        "typeName": {
+                            "id": 27,
+                            "name": "uint256",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "450:7:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "anonymous": false,
+                        "eventSelector": "2b4708ffb84be173b818d9b07f07c6679aa34f2f03fa0763b98034f6fc694fe5",
+                        "id": 36,
+                        "name": "RoomBooked",
+                        "nameLocation": "492:10:0",
+                        "nodeType": "EventDefinition",
+                        "parameters": {
+                            "id": 35,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 30,
+                                    "indexed": false,
+                                    "mutability": "mutable",
+                                    "name": "bookingId",
+                                    "nameLocation": "521:9:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 36,
+                                    "src": "513:17:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 29,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "513:7:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 32,
+                                    "indexed": false,
+                                    "mutability": "mutable",
+                                    "name": "guest",
+                                    "nameLocation": "549:5:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 36,
+                                    "src": "541:13:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 31,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "541:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 34,
+                                    "indexed": false,
+                                    "mutability": "mutable",
+                                    "name": "roomNumber",
+                                    "nameLocation": "573:10:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 36,
+                                    "src": "565:18:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 33,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "565:7:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "502:88:0"
+                        },
+                        "src": "486:105:0"
+                    },
+                    {
+                        "anonymous": false,
+                        "eventSelector": "853fc6307cc2d72d0ec45ec77f198703d63dd760dedc66cf5488bc9727d69f9c",
+                        "id": 40,
+                        "name": "BookingConfirmed",
+                        "nameLocation": "605:16:0",
+                        "nodeType": "EventDefinition",
+                        "parameters": {
+                            "id": 39,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 38,
+                                    "indexed": false,
+                                    "mutability": "mutable",
+                                    "name": "bookingId",
+                                    "nameLocation": "630:9:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 40,
+                                    "src": "622:17:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 37,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "622:7:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "621:19:0"
+                        },
+                        "src": "599:42:0"
+                    },
+                    {
+                        "anonymous": false,
+                        "eventSelector": "f774c001cb52a3566b767ed6e37c92706acb2b80a3ff6049e2849cd62725d085",
+                        "id": 44,
+                        "name": "BookingCancelled",
+                        "nameLocation": "653:16:0",
+                        "nodeType": "EventDefinition",
+                        "parameters": {
+                            "id": 43,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 42,
+                                    "indexed": false,
+                                    "mutability": "mutable",
+                                    "name": "bookingId",
+                                    "nameLocation": "678:9:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 44,
+                                    "src": "670:17:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 41,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "670:7:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "669:19:0"
+                        },
+                        "src": "647:42:0"
+                    },
+                    {
+                        "body": {
+                            "id": 52,
+                            "nodeType": "Block",
+                            "src": "711:42:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "id": 50,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "id": 47,
+                                            "name": "hotelOwner",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 3,
+                                            "src": "722:10:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "expression": {
+                                                "id": 48,
+                                                "name": "msg",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": -15,
+                                                "src": "735:3:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_magic_message",
+                                                    "typeString": "msg"
+                                                }
+                                            },
+                                            "id": 49,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberLocation": "739:6:0",
+                                            "memberName": "sender",
+                                            "nodeType": "MemberAccess",
+                                            "src": "735:10:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "src": "722:23:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "id": 51,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "722:23:0"
+                                }
+                            ]
+                        },
+                        "id": 53,
+                        "implemented": true,
+                        "kind": "constructor",
+                        "modifiers": [],
+                        "name": "",
+                        "nameLocation": "-1:-1:-1",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 45,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "708:2:0"
+                        },
+                        "returnParameters": {
+                            "id": 46,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "711:0:0"
+                        },
+                        "scope": 218,
+                        "src": "697:56:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 64,
+                            "nodeType": "Block",
+                            "src": "782:84:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                },
+                                                "id": 59,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "expression": {
+                                                        "id": 56,
+                                                        "name": "msg",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": -15,
+                                                        "src": "801:3:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_magic_message",
+                                                            "typeString": "msg"
+                                                        }
+                                                    },
+                                                    "id": 57,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "805:6:0",
+                                                    "memberName": "sender",
+                                                    "nodeType": "MemberAccess",
+                                                    "src": "801:10:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "==",
+                                                "rightExpression": {
+                                                    "id": 58,
+                                                    "name": "hotelOwner",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 3,
+                                                    "src": "815:10:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "src": "801:24:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "hexValue": "4f6e6c7920686f74656c206f776e6572",
+                                                "id": 60,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "827:18:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_774baa2eaccef0db18f83a50f96be4c273290647e4cdc83beeaa251c7ecb552b",
+                                                    "typeString": "literal_string \"Only hotel owner\""
+                                                },
+                                                "value": "Only hotel owner"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_774baa2eaccef0db18f83a50f96be4c273290647e4cdc83beeaa251c7ecb552b",
+                                                    "typeString": "literal_string \"Only hotel owner\""
+                                                }
+                                            ],
+                                            "id": 55,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                -18,
+                                                -18,
+                                                -18
+                                            ],
+                                            "referencedDeclaration": -18,
+                                            "src": "793:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 61,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "793:53:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 62,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "793:53:0"
+                                },
+                                {
+                                    "id": 63,
+                                    "nodeType": "PlaceholderStatement",
+                                    "src": "857:1:0"
+                                }
+                            ]
+                        },
+                        "id": 65,
+                        "name": "onlyOwner",
+                        "nameLocation": "770:9:0",
+                        "nodeType": "ModifierDefinition",
+                        "parameters": {
+                            "id": 54,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "779:2:0"
+                        },
+                        "src": "761:105:0",
+                        "virtual": false,
+                        "visibility": "internal"
+                    },
+                    {
+                        "body": {
+                            "id": 109,
+                            "nodeType": "Block",
+                            "src": "927:422:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                "id": 73,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "id": 71,
+                                                    "name": "roomNumber",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 67,
+                                                    "src": "946:10:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": ">",
+                                                "rightExpression": {
+                                                    "hexValue": "30",
+                                                    "id": 72,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "kind": "number",
+                                                    "lValueRequested": false,
+                                                    "nodeType": "Literal",
+                                                    "src": "959:1:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_rational_0_by_1",
+                                                        "typeString": "int_const 0"
+                                                    },
+                                                    "value": "0"
+                                                },
+                                                "src": "946:14:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "hexValue": "496e76616c696420726f6f6d",
+                                                "id": 74,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "962:14:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_ebd6df4994a38b901c94424093ddcd21893b3a2e942059f5351b86d7454d9583",
+                                                    "typeString": "literal_string \"Invalid room\""
+                                                },
+                                                "value": "Invalid room"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_ebd6df4994a38b901c94424093ddcd21893b3a2e942059f5351b86d7454d9583",
+                                                    "typeString": "literal_string \"Invalid room\""
+                                                }
+                                            ],
+                                            "id": 70,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                -18,
+                                                -18,
+                                                -18
+                                            ],
+                                            "referencedDeclaration": -18,
+                                            "src": "938:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 75,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "938:39:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 76,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "938:39:0"
+                                },
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                "id": 81,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "expression": {
+                                                        "id": 78,
+                                                        "name": "msg",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": -15,
+                                                        "src": "996:3:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_magic_message",
+                                                            "typeString": "msg"
+                                                        }
+                                                    },
+                                                    "id": 79,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "1000:5:0",
+                                                    "memberName": "value",
+                                                    "nodeType": "MemberAccess",
+                                                    "src": "996:9:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "==",
+                                                "rightExpression": {
+                                                    "id": 80,
+                                                    "name": "roomPrice",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 6,
+                                                    "src": "1009:9:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "src": "996:22:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "hexValue": "496e636f7272656374207061796d656e74",
+                                                "id": 82,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "1020:19:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_0238b8116a1eedc314d4879ecd6ec3ca04fe72278c7ba7cbb8746c0a4f88d4d8",
+                                                    "typeString": "literal_string \"Incorrect payment\""
+                                                },
+                                                "value": "Incorrect payment"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_0238b8116a1eedc314d4879ecd6ec3ca04fe72278c7ba7cbb8746c0a4f88d4d8",
+                                                    "typeString": "literal_string \"Incorrect payment\""
+                                                }
+                                            ],
+                                            "id": 77,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                -18,
+                                                -18,
+                                                -18
+                                            ],
+                                            "referencedDeclaration": -18,
+                                            "src": "988:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 83,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "988:52:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 84,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "988:52:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 86,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "nodeType": "UnaryOperation",
+                                        "operator": "++",
+                                        "prefix": false,
+                                        "src": "1053:14:0",
+                                        "subExpression": {
+                                            "id": 85,
+                                            "name": "bookingCount",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 28,
+                                            "src": "1053:12:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 87,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1053:14:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 100,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "baseExpression": {
+                                                "id": 88,
+                                                "name": "bookings",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 26,
+                                                "src": "1080:8:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Booking_$21_storage_$",
+                                                    "typeString": "mapping(uint256 => struct HotelBooking.Booking storage ref)"
+                                                }
+                                            },
+                                            "id": 90,
+                                            "indexExpression": {
+                                                "id": 89,
+                                                "name": "bookingCount",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 28,
+                                                "src": "1089:12:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "nodeType": "IndexAccess",
+                                            "src": "1080:22:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_Booking_$21_storage",
+                                                "typeString": "struct HotelBooking.Booking storage ref"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "arguments": [
+                                                {
+                                                    "expression": {
+                                                        "id": 92,
+                                                        "name": "msg",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": -15,
+                                                        "src": "1127:3:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_magic_message",
+                                                            "typeString": "msg"
+                                                        }
+                                                    },
+                                                    "id": 93,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "1131:6:0",
+                                                    "memberName": "sender",
+                                                    "nodeType": "MemberAccess",
+                                                    "src": "1127:10:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                {
+                                                    "id": 94,
+                                                    "name": "roomNumber",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 67,
+                                                    "src": "1152:10:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                {
+                                                    "expression": {
+                                                        "id": 95,
+                                                        "name": "msg",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": -15,
+                                                        "src": "1177:3:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_magic_message",
+                                                            "typeString": "msg"
+                                                        }
+                                                    },
+                                                    "id": 96,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "1181:5:0",
+                                                    "memberName": "value",
+                                                    "nodeType": "MemberAccess",
+                                                    "src": "1177:9:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                {
+                                                    "expression": {
+                                                        "id": 97,
+                                                        "name": "Status",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 11,
+                                                        "src": "1201:6:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_type$_t_enum$_Status_$11_$",
+                                                            "typeString": "type(enum HotelBooking.Status)"
+                                                        }
+                                                    },
+                                                    "id": 98,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "1208:6:0",
+                                                    "memberName": "Booked",
+                                                    "nodeType": "MemberAccess",
+                                                    "referencedDeclaration": 8,
+                                                    "src": "1201:13:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_enum$_Status_$11",
+                                                        "typeString": "enum HotelBooking.Status"
+                                                    }
+                                                }
+                                            ],
+                                            "expression": {
+                                                "argumentTypes": [
+                                                    {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    },
+                                                    {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    },
+                                                    {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    },
+                                                    {
+                                                        "typeIdentifier": "t_enum$_Status_$11",
+                                                        "typeString": "enum HotelBooking.Status"
+                                                    }
+                                                ],
+                                                "id": 91,
+                                                "name": "Booking",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 21,
+                                                "src": "1105:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_type$_t_struct$_Booking_$21_storage_ptr_$",
+                                                    "typeString": "type(struct HotelBooking.Booking storage pointer)"
+                                                }
+                                            },
+                                            "id": 99,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "kind": "structConstructorCall",
+                                            "lValueRequested": false,
+                                            "nameLocations": [],
+                                            "names": [],
+                                            "nodeType": "FunctionCall",
+                                            "src": "1105:120:0",
+                                            "tryCall": false,
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_Booking_$21_memory_ptr",
+                                                "typeString": "struct HotelBooking.Booking memory"
+                                            }
+                                        },
+                                        "src": "1080:145:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Booking_$21_storage",
+                                            "typeString": "struct HotelBooking.Booking storage ref"
+                                        }
+                                    },
+                                    "id": 101,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1080:145:0"
+                                },
+                                {
+                                    "eventCall": {
+                                        "arguments": [
+                                            {
+                                                "id": 103,
+                                                "name": "bookingCount",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 28,
+                                                "src": "1268:12:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            {
+                                                "expression": {
+                                                    "id": 104,
+                                                    "name": "msg",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": -15,
+                                                    "src": "1295:3:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_magic_message",
+                                                        "typeString": "msg"
+                                                    }
+                                                },
+                                                "id": 105,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "memberLocation": "1299:6:0",
+                                                "memberName": "sender",
+                                                "nodeType": "MemberAccess",
+                                                "src": "1295:10:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            {
+                                                "id": 106,
+                                                "name": "roomNumber",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 67,
+                                                "src": "1320:10:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            ],
+                                            "id": 102,
+                                            "name": "RoomBooked",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 36,
+                                            "src": "1243:10:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$_t_address_$_t_uint256_$returns$__$",
+                                                "typeString": "function (uint256,address,uint256)"
+                                            }
+                                        },
+                                        "id": 107,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "1243:98:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 108,
+                                    "nodeType": "EmitStatement",
+                                    "src": "1238:103:0"
+                                }
+                            ]
+                        },
+                        "functionSelector": "5f49d3d8",
+                        "id": 110,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "bookRoom",
+                        "nameLocation": "883:8:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 68,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 67,
+                                    "mutability": "mutable",
+                                    "name": "roomNumber",
+                                    "nameLocation": "900:10:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 110,
+                                    "src": "892:18:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 66,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "892:7:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "891:20:0"
+                        },
+                        "returnParameters": {
+                            "id": 69,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "927:0:0"
+                        },
+                        "scope": 218,
+                        "src": "874:475:0",
+                        "stateMutability": "payable",
+                        "virtual": false,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 140,
+                            "nodeType": "Block",
+                            "src": "1440:236:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_enum$_Status_$11",
+                                                    "typeString": "enum HotelBooking.Status"
+                                                },
+                                                "id": 124,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "expression": {
+                                                        "baseExpression": {
+                                                            "id": 118,
+                                                            "name": "bookings",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 26,
+                                                            "src": "1473:8:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Booking_$21_storage_$",
+                                                                "typeString": "mapping(uint256 => struct HotelBooking.Booking storage ref)"
+                                                            }
+                                                        },
+                                                        "id": 120,
+                                                        "indexExpression": {
+                                                            "id": 119,
+                                                            "name": "bookingId",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 112,
+                                                            "src": "1482:9:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_uint256",
+                                                                "typeString": "uint256"
+                                                            }
+                                                        },
+                                                        "isConstant": false,
+                                                        "isLValue": true,
+                                                        "isPure": false,
+                                                        "lValueRequested": false,
+                                                        "nodeType": "IndexAccess",
+                                                        "src": "1473:19:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_struct$_Booking_$21_storage",
+                                                            "typeString": "struct HotelBooking.Booking storage ref"
+                                                        }
+                                                    },
+                                                    "id": 121,
+                                                    "isConstant": false,
+                                                    "isLValue": true,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "1493:6:0",
+                                                    "memberName": "status",
+                                                    "nodeType": "MemberAccess",
+                                                    "referencedDeclaration": 20,
+                                                    "src": "1473:26:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_enum$_Status_$11",
+                                                        "typeString": "enum HotelBooking.Status"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "==",
+                                                "rightExpression": {
+                                                    "expression": {
+                                                        "id": 122,
+                                                        "name": "Status",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 11,
+                                                        "src": "1503:6:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_type$_t_enum$_Status_$11_$",
+                                                            "typeString": "type(enum HotelBooking.Status)"
+                                                        }
+                                                    },
+                                                    "id": 123,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "1510:6:0",
+                                                    "memberName": "Booked",
+                                                    "nodeType": "MemberAccess",
+                                                    "referencedDeclaration": 8,
+                                                    "src": "1503:13:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_enum$_Status_$11",
+                                                        "typeString": "enum HotelBooking.Status"
+                                                    }
+                                                },
+                                                "src": "1473:43:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "hexValue": "426f6f6b696e67206e6f7420617661696c61626c65",
+                                                "id": 125,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "1531:23:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_d11a7f81e7070905b663dacf9c752f19251754d210736d570df750976e89a71e",
+                                                    "typeString": "literal_string \"Booking not available\""
+                                                },
+                                                "value": "Booking not available"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_d11a7f81e7070905b663dacf9c752f19251754d210736d570df750976e89a71e",
+                                                    "typeString": "literal_string \"Booking not available\""
+                                                }
+                                            ],
+                                            "id": 117,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                -18,
+                                                -18,
+                                                -18
+                                            ],
+                                            "referencedDeclaration": -18,
+                                            "src": "1451:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 126,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "1451:114:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 127,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1451:114:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 134,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "expression": {
+                                                "baseExpression": {
+                                                    "id": 128,
+                                                    "name": "bookings",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 26,
+                                                    "src": "1578:8:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Booking_$21_storage_$",
+                                                        "typeString": "mapping(uint256 => struct HotelBooking.Booking storage ref)"
+                                                    }
+                                                },
+                                                "id": 130,
+                                                "indexExpression": {
+                                                    "id": 129,
+                                                    "name": "bookingId",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 112,
+                                                    "src": "1587:9:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "isConstant": false,
+                                                "isLValue": true,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "nodeType": "IndexAccess",
+                                                "src": "1578:19:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_Booking_$21_storage",
+                                                    "typeString": "struct HotelBooking.Booking storage ref"
+                                                }
+                                            },
+                                            "id": 131,
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "memberLocation": "1598:6:0",
+                                            "memberName": "status",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 20,
+                                            "src": "1578:26:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_enum$_Status_$11",
+                                                "typeString": "enum HotelBooking.Status"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "expression": {
+                                                "id": 132,
+                                                "name": "Status",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 11,
+                                                "src": "1607:6:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_type$_t_enum$_Status_$11_$",
+                                                    "typeString": "type(enum HotelBooking.Status)"
+                                                }
+                                            },
+                                            "id": 133,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": true,
+                                            "lValueRequested": false,
+                                            "memberLocation": "1614:9:0",
+                                            "memberName": "Confirmed",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 9,
+                                            "src": "1607:16:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_enum$_Status_$11",
+                                                "typeString": "enum HotelBooking.Status"
+                                            }
+                                        },
+                                        "src": "1578:45:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_enum$_Status_$11",
+                                            "typeString": "enum HotelBooking.Status"
+                                        }
+                                    },
+                                    "id": 135,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1578:45:0"
+                                },
+                                {
+                                    "eventCall": {
+                                        "arguments": [
+                                            {
+                                                "id": 137,
+                                                "name": "bookingId",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 112,
+                                                "src": "1658:9:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            ],
+                                            "id": 136,
+                                            "name": "BookingConfirmed",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 40,
+                                            "src": "1641:16:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
+                                                "typeString": "function (uint256)"
+                                            }
+                                        },
+                                        "id": 138,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "1641:27:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 139,
+                                    "nodeType": "EmitStatement",
+                                    "src": "1636:32:0"
+                                }
+                            ]
+                        },
+                        "functionSelector": "54056b69",
+                        "id": 141,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [
+                            {
+                                "id": 115,
+                                "kind": "modifierInvocation",
+                                "modifierName": {
+                                    "id": 114,
+                                    "name": "onlyOwner",
+                                    "nameLocations": [
+                                        "1425:9:0"
+                                    ],
+                                    "nodeType": "IdentifierPath",
+                                    "referencedDeclaration": 65,
+                                    "src": "1425:9:0"
+                                },
+                                "nodeType": "ModifierInvocation",
+                                "src": "1425:9:0"
+                            }
+                        ],
+                        "name": "confirmBooking",
+                        "nameLocation": "1366:14:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 113,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 112,
+                                    "mutability": "mutable",
+                                    "name": "bookingId",
+                                    "nameLocation": "1389:9:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 141,
+                                    "src": "1381:17:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 111,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1381:7:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1380:19:0"
+                        },
+                        "returnParameters": {
+                            "id": 116,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1440:0:0"
+                        },
+                        "scope": 218,
+                        "src": "1357:319:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 216,
+                            "nodeType": "Block",
+                            "src": "1733:628:0",
+                            "statements": [
+                                {
+                                    "assignments": [
+                                        148
+                                    ],
+                                    "declarations": [
+                                        {
+                                            "constant": false,
+                                            "id": 148,
+                                            "mutability": "mutable",
+                                            "name": "booking",
+                                            "nameLocation": "1760:7:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 216,
+                                            "src": "1744:23:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "storage",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_Booking_$21_storage_ptr",
+                                                "typeString": "struct HotelBooking.Booking"
+                                            },
+                                            "typeName": {
+                                                "id": 147,
+                                                "nodeType": "UserDefinedTypeName",
+                                                "pathNode": {
+                                                    "id": 146,
+                                                    "name": "Booking",
+                                                    "nameLocations": [
+                                                        "1744:7:0"
+                                                    ],
+                                                    "nodeType": "IdentifierPath",
+                                                    "referencedDeclaration": 21,
+                                                    "src": "1744:7:0"
+                                                },
+                                                "referencedDeclaration": 21,
+                                                "src": "1744:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_Booking_$21_storage_ptr",
+                                                    "typeString": "struct HotelBooking.Booking"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "id": 152,
+                                    "initialValue": {
+                                        "baseExpression": {
+                                            "id": 149,
+                                            "name": "bookings",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 26,
+                                            "src": "1770:8:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Booking_$21_storage_$",
+                                                "typeString": "mapping(uint256 => struct HotelBooking.Booking storage ref)"
+                                            }
+                                        },
+                                        "id": 151,
+                                        "indexExpression": {
+                                            "id": 150,
+                                            "name": "bookingId",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 143,
+                                            "src": "1779:9:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "isConstant": false,
+                                        "isLValue": true,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "nodeType": "IndexAccess",
+                                        "src": "1770:19:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Booking_$21_storage",
+                                            "typeString": "struct HotelBooking.Booking storage ref"
+                                        }
+                                    },
+                                    "nodeType": "VariableDeclarationStatement",
+                                    "src": "1744:45:0"
+                                },
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                "id": 163,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "commonType": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    },
+                                                    "id": 158,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "leftExpression": {
+                                                        "expression": {
+                                                            "id": 154,
+                                                            "name": "msg",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": -15,
+                                                            "src": "1824:3:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_magic_message",
+                                                                "typeString": "msg"
+                                                            }
+                                                        },
+                                                        "id": 155,
+                                                        "isConstant": false,
+                                                        "isLValue": false,
+                                                        "isPure": false,
+                                                        "lValueRequested": false,
+                                                        "memberLocation": "1828:6:0",
+                                                        "memberName": "sender",
+                                                        "nodeType": "MemberAccess",
+                                                        "src": "1824:10:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_address",
+                                                            "typeString": "address"
+                                                        }
+                                                    },
+                                                    "nodeType": "BinaryOperation",
+                                                    "operator": "==",
+                                                    "rightExpression": {
+                                                        "expression": {
+                                                            "id": 156,
+                                                            "name": "booking",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 148,
+                                                            "src": "1838:7:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_struct$_Booking_$21_storage_ptr",
+                                                                "typeString": "struct HotelBooking.Booking storage pointer"
+                                                            }
+                                                        },
+                                                        "id": 157,
+                                                        "isConstant": false,
+                                                        "isLValue": true,
+                                                        "isPure": false,
+                                                        "lValueRequested": false,
+                                                        "memberLocation": "1846:5:0",
+                                                        "memberName": "guest",
+                                                        "nodeType": "MemberAccess",
+                                                        "referencedDeclaration": 13,
+                                                        "src": "1838:13:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_address",
+                                                            "typeString": "address"
+                                                        }
+                                                    },
+                                                    "src": "1824:27:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_bool",
+                                                        "typeString": "bool"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "||",
+                                                "rightExpression": {
+                                                    "commonType": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    },
+                                                    "id": 162,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "leftExpression": {
+                                                        "expression": {
+                                                            "id": 159,
+                                                            "name": "msg",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": -15,
+                                                            "src": "1868:3:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_magic_message",
+                                                                "typeString": "msg"
+                                                            }
+                                                        },
+                                                        "id": 160,
+                                                        "isConstant": false,
+                                                        "isLValue": false,
+                                                        "isPure": false,
+                                                        "lValueRequested": false,
+                                                        "memberLocation": "1872:6:0",
+                                                        "memberName": "sender",
+                                                        "nodeType": "MemberAccess",
+                                                        "src": "1868:10:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_address",
+                                                            "typeString": "address"
+                                                        }
+                                                    },
+                                                    "nodeType": "BinaryOperation",
+                                                    "operator": "==",
+                                                    "rightExpression": {
+                                                        "id": 161,
+                                                        "name": "hotelOwner",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 3,
+                                                        "src": "1882:10:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_address",
+                                                            "typeString": "address"
+                                                        }
+                                                    },
+                                                    "src": "1868:24:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_bool",
+                                                        "typeString": "bool"
+                                                    }
+                                                },
+                                                "src": "1824:68:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "hexValue": "4e6f7420617574686f72697a6564",
+                                                "id": 164,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "1907:16:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_fac3bac318c0d00994f57b0f2f4c643c313072b71db2302bf4b900309cc50b36",
+                                                    "typeString": "literal_string \"Not authorized\""
+                                                },
+                                                "value": "Not authorized"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_fac3bac318c0d00994f57b0f2f4c643c313072b71db2302bf4b900309cc50b36",
+                                                    "typeString": "literal_string \"Not authorized\""
+                                                }
+                                            ],
+                                            "id": 153,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                -18,
+                                                -18,
+                                                -18
+                                            ],
+                                            "referencedDeclaration": -18,
+                                            "src": "1802:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 165,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "1802:132:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 166,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1802:132:0"
+                                },
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_enum$_Status_$11",
+                                                    "typeString": "enum HotelBooking.Status"
+                                                },
+                                                "id": 172,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "expression": {
+                                                        "id": 168,
+                                                        "name": "booking",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 148,
+                                                        "src": "1969:7:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_struct$_Booking_$21_storage_ptr",
+                                                            "typeString": "struct HotelBooking.Booking storage pointer"
+                                                        }
+                                                    },
+                                                    "id": 169,
+                                                    "isConstant": false,
+                                                    "isLValue": true,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "1977:6:0",
+                                                    "memberName": "status",
+                                                    "nodeType": "MemberAccess",
+                                                    "referencedDeclaration": 20,
+                                                    "src": "1969:14:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_enum$_Status_$11",
+                                                        "typeString": "enum HotelBooking.Status"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "==",
+                                                "rightExpression": {
+                                                    "expression": {
+                                                        "id": 170,
+                                                        "name": "Status",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 11,
+                                                        "src": "1987:6:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_type$_t_enum$_Status_$11_$",
+                                                            "typeString": "type(enum HotelBooking.Status)"
+                                                        }
+                                                    },
+                                                    "id": 171,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "1994:6:0",
+                                                    "memberName": "Booked",
+                                                    "nodeType": "MemberAccess",
+                                                    "referencedDeclaration": 8,
+                                                    "src": "1987:13:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_enum$_Status_$11",
+                                                        "typeString": "enum HotelBooking.Status"
+                                                    }
+                                                },
+                                                "src": "1969:31:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "hexValue": "43616e6e6f742063616e63656c",
+                                                "id": 173,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "2015:15:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_0198efb7d84d2ab1adaaef61e3b1ac4109ab8b12e09e4b9793fcc7080ac7a18f",
+                                                    "typeString": "literal_string \"Cannot cancel\""
+                                                },
+                                                "value": "Cannot cancel"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_0198efb7d84d2ab1adaaef61e3b1ac4109ab8b12e09e4b9793fcc7080ac7a18f",
+                                                    "typeString": "literal_string \"Cannot cancel\""
+                                                }
+                                            ],
+                                            "id": 167,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                -18,
+                                                -18,
+                                                -18
+                                            ],
+                                            "referencedDeclaration": -18,
+                                            "src": "1947:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 174,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "1947:94:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 175,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1947:94:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 181,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "expression": {
+                                                "id": 176,
+                                                "name": "booking",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 148,
+                                                "src": "2054:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_Booking_$21_storage_ptr",
+                                                    "typeString": "struct HotelBooking.Booking storage pointer"
+                                                }
+                                            },
+                                            "id": 178,
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "memberLocation": "2062:6:0",
+                                            "memberName": "status",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 20,
+                                            "src": "2054:14:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_enum$_Status_$11",
+                                                "typeString": "enum HotelBooking.Status"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "expression": {
+                                                "id": 179,
+                                                "name": "Status",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 11,
+                                                "src": "2071:6:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_type$_t_enum$_Status_$11_$",
+                                                    "typeString": "type(enum HotelBooking.Status)"
+                                                }
+                                            },
+                                            "id": 180,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": true,
+                                            "lValueRequested": false,
+                                            "memberLocation": "2078:9:0",
+                                            "memberName": "Cancelled",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 10,
+                                            "src": "2071:16:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_enum$_Status_$11",
+                                                "typeString": "enum HotelBooking.Status"
+                                            }
+                                        },
+                                        "src": "2054:33:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_enum$_Status_$11",
+                                            "typeString": "enum HotelBooking.Status"
+                                        }
+                                    },
+                                    "id": 182,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "2054:33:0"
+                                },
+                                {
+                                    "assignments": [
+                                        184
+                                    ],
+                                    "declarations": [
+                                        {
+                                            "constant": false,
+                                            "id": 184,
+                                            "mutability": "mutable",
+                                            "name": "refund",
+                                            "nameLocation": "2108:6:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 216,
+                                            "src": "2100:14:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            },
+                                            "typeName": {
+                                                "id": 183,
+                                                "name": "uint256",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "2100:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "id": 187,
+                                    "initialValue": {
+                                        "expression": {
+                                            "id": 185,
+                                            "name": "booking",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 148,
+                                            "src": "2117:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_Booking_$21_storage_ptr",
+                                                "typeString": "struct HotelBooking.Booking storage pointer"
+                                            }
+                                        },
+                                        "id": 186,
+                                        "isConstant": false,
+                                        "isLValue": true,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "memberLocation": "2125:6:0",
+                                        "memberName": "amount",
+                                        "nodeType": "MemberAccess",
+                                        "referencedDeclaration": 17,
+                                        "src": "2117:14:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "nodeType": "VariableDeclarationStatement",
+                                    "src": "2100:31:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 192,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "expression": {
+                                                "id": 188,
+                                                "name": "booking",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 148,
+                                                "src": "2142:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_Booking_$21_storage_ptr",
+                                                    "typeString": "struct HotelBooking.Booking storage pointer"
+                                                }
+                                            },
+                                            "id": 190,
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "memberLocation": "2150:6:0",
+                                            "memberName": "amount",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 17,
+                                            "src": "2142:14:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "hexValue": "30",
+                                            "id": 191,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": true,
+                                            "kind": "number",
+                                            "lValueRequested": false,
+                                            "nodeType": "Literal",
+                                            "src": "2159:1:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_rational_0_by_1",
+                                                "typeString": "int_const 0"
+                                            },
+                                            "value": "0"
+                                        },
+                                        "src": "2142:18:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 193,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "2142:18:0"
+                                },
+                                {
+                                    "assignments": [
+                                        195,
+                                        null
+                                    ],
+                                    "declarations": [
+                                        {
+                                            "constant": false,
+                                            "id": 195,
+                                            "mutability": "mutable",
+                                            "name": "success",
+                                            "nameLocation": "2179:7:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 216,
+                                            "src": "2174:12:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_bool",
+                                                "typeString": "bool"
+                                            },
+                                            "typeName": {
+                                                "id": 194,
+                                                "name": "bool",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "2174:4:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        },
+                                        null
+                                    ],
+                                    "id": 206,
+                                    "initialValue": {
+                                        "arguments": [
+                                            {
+                                                "hexValue": "",
+                                                "id": 204,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "2259:2:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+                                                    "typeString": "literal_string \"\""
+                                                },
+                                                "value": ""
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+                                                    "typeString": "literal_string \"\""
+                                                }
+                                            ],
+                                            "expression": {
+                                                "argumentTypes": [
+                                                    {
+                                                        "typeIdentifier": "t_stringliteral_c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+                                                        "typeString": "literal_string \"\""
+                                                    }
+                                                ],
+                                                "expression": {
+                                                    "arguments": [
+                                                        {
+                                                            "expression": {
+                                                                "id": 198,
+                                                                "name": "booking",
+                                                                "nodeType": "Identifier",
+                                                                "overloadedDeclarations": [],
+                                                                "referencedDeclaration": 148,
+                                                                "src": "2200:7:0",
+                                                                "typeDescriptions": {
+                                                                    "typeIdentifier": "t_struct$_Booking_$21_storage_ptr",
+                                                                    "typeString": "struct HotelBooking.Booking storage pointer"
+                                                                }
+                                                            },
+                                                            "id": 199,
+                                                            "isConstant": false,
+                                                            "isLValue": true,
+                                                            "isPure": false,
+                                                            "lValueRequested": false,
+                                                            "memberLocation": "2208:5:0",
+                                                            "memberName": "guest",
+                                                            "nodeType": "MemberAccess",
+                                                            "referencedDeclaration": 13,
+                                                            "src": "2200:13:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_address",
+                                                                "typeString": "address"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "expression": {
+                                                        "argumentTypes": [
+                                                            {
+                                                                "typeIdentifier": "t_address",
+                                                                "typeString": "address"
+                                                            }
+                                                        ],
+                                                        "id": 197,
+                                                        "isConstant": false,
+                                                        "isLValue": false,
+                                                        "isPure": true,
+                                                        "lValueRequested": false,
+                                                        "nodeType": "ElementaryTypeNameExpression",
+                                                        "src": "2192:8:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_type$_t_address_payable_$",
+                                                            "typeString": "type(address payable)"
+                                                        },
+                                                        "typeName": {
+                                                            "id": 196,
+                                                            "name": "address",
+                                                            "nodeType": "ElementaryTypeName",
+                                                            "src": "2192:8:0",
+                                                            "stateMutability": "payable",
+                                                            "typeDescriptions": {}
+                                                        }
+                                                    },
+                                                    "id": 200,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "kind": "typeConversion",
+                                                    "lValueRequested": false,
+                                                    "nameLocations": [],
+                                                    "names": [],
+                                                    "nodeType": "FunctionCall",
+                                                    "src": "2192:22:0",
+                                                    "tryCall": false,
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address_payable",
+                                                        "typeString": "address payable"
+                                                    }
+                                                },
+                                                "id": 201,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "memberLocation": "2215:4:0",
+                                                "memberName": "call",
+                                                "nodeType": "MemberAccess",
+                                                "src": "2192:27:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_function_barecall_payable$_t_bytes_memory_ptr_$returns$_t_bool_$_t_bytes_memory_ptr_$",
+                                                    "typeString": "function (bytes memory) payable returns (bool,bytes memory)"
+                                                }
+                                            },
+                                            "id": 203,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "names": [
+                                                "value"
+                                            ],
+                                            "nodeType": "FunctionCallOptions",
+                                            "options": [
+                                                {
+                                                    "id": 202,
+                                                    "name": "refund",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 184,
+                                                    "src": "2241:6:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                }
+                                            ],
+                                            "src": "2192:66:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_barecall_payable$_t_bytes_memory_ptr_$returns$_t_bool_$_t_bytes_memory_ptr_$value",
+                                                "typeString": "function (bytes memory) payable returns (bool,bytes memory)"
+                                            }
+                                        },
+                                        "id": 205,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "2192:70:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$_t_bool_$_t_bytes_memory_ptr_$",
+                                            "typeString": "tuple(bool,bytes memory)"
+                                        }
+                                    },
+                                    "nodeType": "VariableDeclarationStatement",
+                                    "src": "2173:89:0"
+                                },
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "id": 208,
+                                                "name": "success",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 195,
+                                                "src": "2283:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "hexValue": "526566756e64206661696c6564",
+                                                "id": 209,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "2292:15:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_940ea0545bf4a4779ef86217d18a28c86bb09c07d43dd7635f3da6878953d25e",
+                                                    "typeString": "literal_string \"Refund failed\""
+                                                },
+                                                "value": "Refund failed"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_940ea0545bf4a4779ef86217d18a28c86bb09c07d43dd7635f3da6878953d25e",
+                                                    "typeString": "literal_string \"Refund failed\""
+                                                }
+                                            ],
+                                            "id": 207,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                -18,
+                                                -18,
+                                                -18
+                                            ],
+                                            "referencedDeclaration": -18,
+                                            "src": "2275:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 210,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "2275:33:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 211,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "2275:33:0"
+                                },
+                                {
+                                    "eventCall": {
+                                        "arguments": [
+                                            {
+                                                "id": 213,
+                                                "name": "bookingId",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 143,
+                                                "src": "2343:9:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            ],
+                                            "id": 212,
+                                            "name": "BookingCancelled",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 44,
+                                            "src": "2326:16:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
+                                                "typeString": "function (uint256)"
+                                            }
+                                        },
+                                        "id": 214,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "2326:27:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 215,
+                                    "nodeType": "EmitStatement",
+                                    "src": "2321:32:0"
+                                }
+                            ]
+                        },
+                        "functionSelector": "0dca825e",
+                        "id": 217,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "cancelBooking",
+                        "nameLocation": "1693:13:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 144,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 143,
+                                    "mutability": "mutable",
+                                    "name": "bookingId",
+                                    "nameLocation": "1715:9:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 217,
+                                    "src": "1707:17:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 142,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1707:7:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1706:19:0"
+                        },
+                        "returnParameters": {
+                            "id": 145,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1733:0:0"
+                        },
+                        "scope": 218,
+                        "src": "1684:677:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "public"
+                    }
+                ],
+                "scope": 219,
+                "src": "64:2300:0",
+                "usedErrors": [],
+                "usedEvents": [
+                    36,
+                    40,
+                    44
+                ]
+            }
+        ],
+        "src": "36:2330:0"
+    },
+    "functionHashes": {
+        "bookRoom(uint256)": "5f49d3d8",
+        "bookingCount()": "6d759172",
+        "bookings(uint256)": "1dab301e",
+        "cancelBooking(uint256)": "0dca825e",
+        "confirmBooking(uint256)": "54056b69",
+        "hotelOwner()": "b173616b",
+        "roomPrice()": "6c036162"
+    },
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "293400",
+            "executionCost": "46677",
+            "totalCost": "340077"
+        },
+        "external": {
+            "bookRoom(uint256)": "123195",
+            "bookingCount()": "2363",
+            "bookings(uint256)": "8781",
+            "cancelBooking(uint256)": "infinite",
+            "confirmBooking(uint256)": "29865",
+            "hotelOwner()": "2405",
+            "roomPrice()": "2341"
+        }
+    }
+}
