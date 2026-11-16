@@ -1,0 +1,23 @@
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment variables
+.env
+.env.*
+
+# Private keys
+*.pem
+*.key
+
+# Temporary files
+*.log
+
+# VS Code
+.vscode/
+
+# Node.js
+node_modules/
