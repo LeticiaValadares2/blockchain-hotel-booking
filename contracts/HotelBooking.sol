@@ -43,7 +43,10 @@ contract HotelBooking {
 
     function bookRoom(uint256 roomNumber) public payable {
         require(roomNumber > 0, "Invalid room");
-        require(msg.value == roomPrice, "Incorrect payment");
+        require(
+    msg.value == roomPrice,
+    "Incorrect payment: send exactly 1 ETH"
+);
 
         bookingCount++;
 
