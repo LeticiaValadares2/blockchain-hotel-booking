@@ -45,8 +45,7 @@ contract HotelBooking {
         require(roomNumber > 0, "Invalid room");
         require(
     msg.value == roomPrice,
-    "Incorrect payment: send exactly 1 ETH"
-);
+    "Incorrect payment: send exactly 1 ETH" );
 
         bookingCount++;
 
@@ -104,5 +103,9 @@ contract HotelBooking {
         require(success, "Refund failed");
 
         emit BookingCancelled(bookingId);
+    }
+    // Returns the price required to book a hotel room.
+    function getBookingPrice() public view returns (uint256) {
+        return roomPrice;
     }
 }
